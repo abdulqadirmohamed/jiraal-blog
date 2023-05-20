@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FiArrowUpRight } from "react-icons/fi";
 
 const NewsCards = () => {
   return (
@@ -37,7 +36,6 @@ const NewsCards = () => {
         </p>
         <div className="text-sm font-semibold hover:underline flex items-center gap-1">
           <span>Read post</span>
-          <FiArrowUpRight />
         </div>
       </Link>
       <div></div>
