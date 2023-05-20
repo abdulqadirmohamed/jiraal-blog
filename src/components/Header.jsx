@@ -16,13 +16,13 @@ export const Header = () => {
         </div>
         <div>
           <button className="bg-black text-[#F8AB0A] px-6 py-2 rounded-full">
-            Signup to the jiiraal
+            Signup to the Jiraal
           </button>
         </div>
       </div>
 
       <div className="mt-10">
-        <h1 className="text-4xl font-extrabold">Jiiraal's Daily Blog</h1>
+        <h1 className="text-4xl font-extrabold">Jiraal's Daily Blog</h1>
         <span className="font-bold">
           Welcome to Every Developers favourite blog in the Devosphere
         </span>

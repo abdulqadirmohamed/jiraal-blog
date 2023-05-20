@@ -27,7 +27,7 @@ const NewsCards = () => {
         </div>
       </div>
       {/*  */}
-      <Link href="/" className="flex flex-col gap-2 my-2">
+      <Link href={`blog`} className="flex flex-col gap-2 my-2">
         <div className="hidden md:block text-lg font-semibold underline">
           Meta Clone
         </div>
