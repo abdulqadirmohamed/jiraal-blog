@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const NewsCards = () => {
+const NewsCards = ({tag, postID}) => {
   return (
     <div>
       <div className="relative overflow-hidden">
@@ -20,13 +20,13 @@ const NewsCards = () => {
           </div>
           <div className="flex gap-1">
             <button className="text-black bg-[#F8AB0A] px-4 py-1 rounded-full">
-              Africa
+              {tag}
             </button>
           </div>
         </div>
       </div>
       {/*  */}
-      <Link href={`blog`} className="flex flex-col gap-2 my-2">
+      <Link href={`blog/${postID}`} className="flex flex-col gap-2 my-2">
         <div className="hidden md:block text-lg font-semibold underline">
           Meta Clone
         </div>
