@@ -13,7 +13,7 @@ export const Header = () => {
               src="https://shorturl.at/qQSVW"
               alt="The PAPAFAM"
             />
-            <h1>The PAPAFAM</h1>
+            <h1>JIRAAL BLOG</h1>
           </Link>
           <div>
             <button className="bg-black text-[#F8AB0A] px-6 py-2 rounded-full">

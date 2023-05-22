@@ -19,7 +19,7 @@ const NewsCards = ({tag, postID}) => {
             <span className="text-sm font-light">May 12, 2023</span>
           </div>
           <div className="flex gap-1">
-            <button className="text-black bg-[#F8AB0A] px-4 py-1 rounded-full">
+            <button className="text-black bg-[#F8AB0A] px-4 py-1 rounded-full capitalize">
               {tag}
             </button>
           </div>
