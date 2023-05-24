@@ -1,5 +1,4 @@
 import NewsCards from "./NewsCards";
-import { useState, useEffect } from "react";
 
 export const News = () => {
   const posts = [

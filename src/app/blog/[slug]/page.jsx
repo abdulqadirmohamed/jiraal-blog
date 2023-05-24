@@ -4,9 +4,9 @@ import { BiTime } from "react-icons/bi";
 
 const page = () => {
   const tags = [
-    { id: 1, tagLink: "Africa" },
-    { id: 2, tagLink: "History" },
-    { id: 3, tagLink: "Islam" },
+    { id: 1, tagLink: "africa" },
+    { id: 2, tagLink: "history" },
+    { id: 3, tagLink: "islam" },
   ];
   return (
     <div className="grid grid-cols-5 gap-6">
@@ -50,7 +50,7 @@ const page = () => {
             <Link
               href={`/tags/${tag.tagLink}`}
               key={tag.id}
-              className="text-black text-center bg-[#F8AB0A] hover:underline px-4 py-1 rounded-full"
+              className="text-black text-center capitalize bg-[#F8AB0A] hover:underline px-4 py-1 rounded-full"
             >
               {tag.tagLink}
             </Link>
