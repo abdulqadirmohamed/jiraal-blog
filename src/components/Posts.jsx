@@ -20,7 +20,7 @@ export const Posts = () => {
   return (
     <div className="my-10">
       {posts.map((post) => (
-        <PostCards key={post.id} postID={post.id} title={post.title}/>
+        <PostCards key={post.id} postID={post.id} title={post.title} cover={post.cover} />
       ))}
     </div>
   );

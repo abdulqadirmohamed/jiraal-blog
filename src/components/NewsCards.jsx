@@ -2,24 +2,28 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const NewsCards = ({tag, postID}) => {
+
+
+const NewsCards = ({tag, postID, title, cover}) => {
   return (
     <div>
       <div className="relative overflow-hidden">
-        <img
+        <Image
           className="w-full h-[250px]"
-          src="https://www.planetware.com/wpimages/2021/01/africa-best-cities-cape-town-south-africa.jpg"
-          alt=""
+          src={cover}
+          alt={title}
+          width={500}
+          height={500}
         />
         <div className=" text-white backdrop-blur w-full absolute bottom-0 p-4 flex justify-between items-center">
           <div>
             <h1 className="font-semibold hover:underline cursor-pointer">
-              Meta Clone
+              {title}
             </h1>
             <span className="text-sm font-light">May 12, 2023</span>
           </div>
           <div className="flex gap-1">
-            <Link href={`/tags/${tag}`} className="text-black bg-[#F8AB0A] px-4 py-1 rounded-full capitalize">
+            <Link href={`/blog/${postID}`} className="text-black bg-[#F8AB0A] px-4 py-1 rounded-full capitalize">
               {tag}
             </Link>
           </div>
@@ -28,7 +32,7 @@ const NewsCards = ({tag, postID}) => {
       {/*  */}
       <Link href={`blog/${postID}`} className="flex flex-col gap-2 my-2">
         <div className="hidden md:block text-lg font-semibold underline">
-          Meta Clone
+        {title}
         </div>
         <p className="text-sm">
           Join me as I build a Real Time Messenger App with Next.js 13. You'll

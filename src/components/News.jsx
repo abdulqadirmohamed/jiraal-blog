@@ -1,18 +1,28 @@
+import { useEffect, useState } from "react";
 import NewsCards from "./NewsCards";
+import { supabase } from "./supabase";
 
 export const News = () => {
-  const posts = [
-    { id: 1, text: "lorem", tag: 'africa'},
-    { id: 2,  text: "lorem", tag: 'history' },
-    { id: 3,  text: "lorem", tag: 'islam' },
-    { id: 4,  text: "lorem", tag: 'technology' }
-  ];
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const { data, error } = await supabase.from("blog").select("*");
+      setPosts(data);
+    } catch {
+      alert(error);
+    }
+  };
 
   return (
     <div className="md:grid grid-cols-2 gap-6">
       {posts.map((post) => (
         <div key={post.id}>
-          <NewsCards tag={post.tag} postID={post.id}/>
+          <NewsCards tag={post.tag} title={post.title} postID={post.id} />
         </div>
       ))}
     </div>

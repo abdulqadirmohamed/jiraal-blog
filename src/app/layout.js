@@ -15,10 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Header />
-        <div className="md:w-[70%] w-[90%]  mx-auto">
-        {children}
-
-        </div>
+        <div className="md:w-[70%] w-[90%]  mx-auto">{children}</div>
         <Footer />
       </body>
     </html>

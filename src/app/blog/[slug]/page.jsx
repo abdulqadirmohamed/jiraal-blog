@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { BiTime } from "react-icons/bi";
 
-const page = () => {
+const page = ({params}) => {
   const tags = [
     { id: 1, tagLink: "africa" },
     { id: 2, tagLink: "history" },
@@ -13,8 +13,7 @@ const page = () => {
       {/* Details */}
       <div className="col-span-4">
         <h1 className="text-2xl font-semibold mb-3">
-          NBA play-offs: Jamal Murray stars as Denver Nuggets beat LA Lakers to
-          move to brink of NBA finals
+          {params.slug}
         </h1>
         <hr />
         <div className="my-4 flex gap-4 text-xs text-gray-500 divide-x">
