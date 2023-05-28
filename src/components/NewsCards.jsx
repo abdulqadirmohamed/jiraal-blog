@@ -14,6 +14,7 @@ const NewsCards = ({tag, postID, title, cover}) => {
           alt={title}
           width={500}
           height={500}
+          
         />
         <div className=" text-white backdrop-blur w-full absolute bottom-0 p-4 flex justify-between items-center">
           <div>

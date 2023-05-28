@@ -1,8 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images:{
-        domains: ["app.supabase.com"]
+        domains: [
+            "cdn.pixabay.com"
+          ],
     }
+    
 }
 
 module.exports = nextConfig
+

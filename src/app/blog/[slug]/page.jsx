@@ -1,8 +1,35 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { BiTime } from "react-icons/bi";
+import { useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 
-const page = ({params}) => {
+import { supabase } from "@/components/supabase";
+const page = () => {
+  const router = useRouter();
+
+  const [article, setArticle] = useState("");
+
+  const { id } = router;
+
+
+  useEffect(() => {
+    async function getArticle() {
+      const { data, error } = await supabase
+        .from("blog")
+        .select("*")
+        .filter("id", "eq", id)
+        .single();
+      if (error) {
+        console.log(error);
+      } else {
+        setArticle(data);
+      }
+    }
+    getArticle();
+  }, [id]);
+
   const tags = [
     { id: 1, tagLink: "africa" },
     { id: 2, tagLink: "history" },
@@ -12,9 +39,7 @@ const page = ({params}) => {
     <div className="grid grid-cols-5 gap-6">
       {/* Details */}
       <div className="col-span-4">
-        <h1 className="text-2xl font-semibold mb-3">
-          {params.slug}
-        </h1>
+        <h1 className="text-2xl font-semibold mb-3">{article.title}</h1>
         <hr />
         <div className="my-4 flex gap-4 text-xs text-gray-500 divide-x">
           <div className="flex items-center gap-1">
