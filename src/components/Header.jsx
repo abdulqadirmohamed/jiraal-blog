@@ -1,5 +1,7 @@
 import Link from "next/link";
 import React from "react";
+import logo from '../img/logo.jpg'
+import Image from "next/image";
 
 export const Header = () => {
   return (
@@ -8,15 +10,15 @@ export const Header = () => {
         {/* Logo */}
         <div className="flex justify-between items-center">
           <Link href="/" className="flex gap-2 items-center">
-            <img
+            <Image
               className="rounded-full w-11"
-              src="https://shorturl.at/qQSVW"
-              alt="The PAPAFAM"
+              src={logo}
+              alt="jiraal"
             />
             <h1>JIRAAL BLOG</h1>
           </Link>
           <div>
-            <button className="bg-black text-[#F8AB0A] px-6 py-2 rounded-full">
+            <button className="text-white bg-[#2341D9] px-6 py-2 rounded-full">
               Signup to the Jiraal
             </button>
           </div>
@@ -29,7 +31,7 @@ export const Header = () => {
           </span>
         </div>
       </div>
-      <div className="my-6 w-full h-[1px] bg-[#F8AB0A]"></div>
+      <div className="my-6 w-full h-[1px] bg-[#2341D9]"></div>
     </div>
   );
 };

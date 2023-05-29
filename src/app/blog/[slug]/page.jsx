@@ -1,49 +1,37 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { BiTime } from "react-icons/bi";
-import { useRouter } from "next/navigation";
-import { useParams } from "next/navigation";
-
 import { supabase } from "@/components/supabase";
-const page = () => {
-  const router = useRouter();
+import { BiTime } from "react-icons/bi";
 
-  const [article, setArticle] = useState("");
+import { useRouter } from "next/navigation";
 
-  const { id } = router;
-
+const page = ({ params }) => {
+  const [tags, setTags] = useState([]);
 
   useEffect(() => {
-    async function getArticle() {
-      const { data, error } = await supabase
-        .from("blog")
-        .select("*")
-        .filter("id", "eq", id)
-        .single();
-      if (error) {
-        console.log(error);
-      } else {
-        setArticle(data);
-      }
+    fetchData();
+  }, []);
+  
+  const fetchData = async () => {
+    try {
+      const { data, error } = await supabase.
+      from("blog").select("tag, id")
+      setTags(data);
+    } catch {
+      alert(error);
     }
-    getArticle();
-  }, [id]);
-
-  const tags = [
-    { id: 1, tagLink: "africa" },
-    { id: 2, tagLink: "history" },
-    { id: 3, tagLink: "islam" },
-  ];
+  };
+  
   return (
     <div className="grid grid-cols-5 gap-6">
       {/* Details */}
       <div className="col-span-4">
-        <h1 className="text-2xl font-semibold mb-3">{article.title}</h1>
+        <h1 className="text-2xl font-semibold mb-3">{params.id}</h1>
         <hr />
         <div className="my-4 flex gap-4 text-xs text-gray-500 divide-x">
           <div className="flex items-center gap-1">
-            <BiTime />
+            <BiTime size={20} />
             <span> 10 hours ago</span>
           </div>
           <div className="divide-x"></div>
@@ -70,13 +58,13 @@ const page = () => {
       <div>
         <h1>Tags</h1>
         <div className="my-4 grid grid-cols-2 gap-2">
-          {tags.map((tag) => (
+          {tags?.map((tag) => (
             <Link
               href={`/tags/${tag.tagLink}`}
               key={tag.id}
-              className="text-black text-center capitalize bg-[#F8AB0A] hover:underline px-4 py-1 rounded-full"
+              className="text-white text-center capitalize bg-[#2341D9] hover:underline px-4 py-1 rounded-full"
             >
-              {tag.tagLink}
+              {tag.tags}
             </Link>
           ))}
         </div>
