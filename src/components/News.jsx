@@ -1,21 +1,12 @@
-"use client"
+'use client'
 import { useEffect, useState } from "react";
 import NewsCards from "./NewsCards";
 
 import { supabase } from "./supabase";
 
-// export async function getServerSideProps() {
-//   const { data, error } = await supabase.from("blog").select("*");
-//     console.log(error)
 
-//   return {
-//     props: {
-//       posts: data,
-//     },
-//   };
-// }
 export const News = () => {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([])
 
 useEffect(() => {
   fetchData();
@@ -47,5 +38,3 @@ const fetchData = async () => {
     </div>
   );
 };
-
-

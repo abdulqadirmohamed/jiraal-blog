@@ -4,30 +4,44 @@ import Link from "next/link";
 import { supabase } from "@/components/supabase";
 import { BiTime } from "react-icons/bi";
 
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/router";
+import { useRouter } from 'next/navigation';
 
-const page = ({ params }) => {
-  const [tags, setTags] = useState([]);
+
+const page = () => {
+  const router = useRouter(); 
+    // const { id } = router.query
+    const { id } = router
+
+  const [article, setArticle] = useState ({});
+
 
   useEffect(() => {
-    fetchData();
-  }, []);
-  
-  const fetchData = async () => {
-    try {
-      const { data, error } = await supabase.
-      from("blog").select("tag, id")
-      setTags(data);
-    } catch {
-      alert(error);
+    async function getArticle() {
+      const { data, error } = await supabase
+        .from("blog")
+        .select("*")
+        .filter("id", "eq", id)
+        .single();
+
+      if (error) {
+        console.log(error);
+      } else {
+        setArticle(data);
+      }
     }
-  };
-  
+    
+    // if(id !== "undefined") {
+    //   getArticle();
+    // }
+    getArticle();
+    
+  }, [id]);
   return (
     <div className="grid grid-cols-5 gap-6">
       {/* Details */}
       <div className="col-span-4">
-        <h1 className="text-2xl font-semibold mb-3">{params.id}</h1>
+        <h1 className="text-2xl font-semibold mb-3"></h1>
         <hr />
         <div className="my-4 flex gap-4 text-xs text-gray-500 divide-x">
           <div className="flex items-center gap-1">
@@ -36,7 +50,7 @@ const page = ({ params }) => {
           </div>
           <div className="divide-x"></div>
           <Link href="#" className="hover:underline">
-            Sports
+            Climate
           </Link>
         </div>
         <img
@@ -58,15 +72,15 @@ const page = ({ params }) => {
       <div>
         <h1>Tags</h1>
         <div className="my-4 grid grid-cols-2 gap-2">
-          {tags?.map((tag) => (
+          {/* {tags?.map((tag) => (
             <Link
-              href={`/tags/${tag.tagLink}`}
+              href={`/tags/${tag.tag}`}
               key={tag.id}
               className="text-white text-center capitalize bg-[#2341D9] hover:underline px-4 py-1 rounded-full"
             >
-              {tag.tags}
+              {tag.tag}
             </Link>
-          ))}
+          ))} */}
         </div>
       </div>
     </div>
